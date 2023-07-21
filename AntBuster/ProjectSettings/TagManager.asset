@@ -5,6 +5,10 @@ TagManager:
   serializedVersion: 2
   tags:
   - Route
+  - Corner_1
+  - Corner_2
+  - Corner_3
+  - Corner_4
   layers:
   - Default
   - TransparentFX
