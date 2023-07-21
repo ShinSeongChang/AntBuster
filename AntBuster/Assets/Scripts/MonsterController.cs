@@ -55,23 +55,28 @@ public class MonsterController : MonoBehaviour
             isUp = true;
             slimeAnimator.SetTrigger("Corner_1");
         }
-        if (collision.tag == "Corner_2")
+        else if (collision.tag == "Corner_2")
         {
             isUp = false;
             isRight = true;
             slimeAnimator.SetTrigger("Corner_2");
         }
-        if (collision.tag == "Corner_3")
+        else if (collision.tag == "Corner_3")
         {
             isRight = false;
             isDown = true;
             slimeAnimator.SetTrigger("Corner_3");
         }
-        if (collision.tag == "Corner_4")
+        else if (collision.tag == "Corner_4")
         {
             isDown = false;
             isRight = true;
             slimeAnimator.SetTrigger("Corner_4");
+        }
+
+        if(collision.tag == "Weapon_Hammer")
+        {
+            Destroy(this.gameObject);
         }
     }
 }

@@ -10,6 +10,7 @@ TagManager:
   - Corner_3
   - Corner_4
   - Monster
+  - Weapon_Hammer
   layers:
   - Default
   - TransparentFX
