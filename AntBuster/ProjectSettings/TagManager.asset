@@ -9,6 +9,7 @@ TagManager:
   - Corner_2
   - Corner_3
   - Corner_4
+  - Monster
   layers:
   - Default
   - TransparentFX
