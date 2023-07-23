@@ -7,7 +7,7 @@ public class MonsterController : MonoBehaviour
 
     public Rigidbody2D monsterRigid = default;
     private Animator slimeAnimator = default;
-    private float speed = 3.0f;
+    private float speed = 1.5f;
 
     public bool isRight = false;
     public bool isLeft = false;
@@ -76,7 +76,8 @@ public class MonsterController : MonoBehaviour
 
         if(collision.tag == "Weapon_Hammer")
         {
-            Destroy(this.gameObject);
+            //Destroy(this.gameObject);
+            Debug.Log("타격을 당함");
         }
     }
 }

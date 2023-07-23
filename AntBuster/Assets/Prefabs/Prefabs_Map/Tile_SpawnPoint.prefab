@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7079287833223231691}
   - component: {fileID: 7079287833223231684}
+  - component: {fileID: 6896304961345101029}
   m_Layer: 0
   m_Name: Tile_SpawnPoint
   m_TagString: Untagged
@@ -84,3 +85,16 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &6896304961345101029
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7079287833223231690}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 92387ac1775b7d345bac02b2b3103423, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mobPrefab: {fileID: 8340316561122792657, guid: ecb970e9abfe20a4eb408d6970da1d61, type: 3}
