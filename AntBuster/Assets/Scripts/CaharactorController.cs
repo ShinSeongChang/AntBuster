@@ -31,8 +31,8 @@ public class CaharactorController : MonoBehaviour
         // result 는 터렛에서부터 표적까지의 거리를 계산한다 ==> 목표까지의 거리 = 표적 - 자신
         result = monsterPos - charactorPos;
 
-        Debug.Log("표적과의 거리");
-        Debug.Log(result.normalized);
+        //Debug.Log("표적과의 거리");
+        //Debug.Log(result.normalized);
 
         charactor_Hammer_Animator.SetFloat("Xpos", result.normalized.x);
         charactor_Hammer_Animator.SetFloat("Ypos", result.normalized.y);

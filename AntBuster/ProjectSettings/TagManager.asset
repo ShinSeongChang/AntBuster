@@ -11,6 +11,7 @@ TagManager:
   - Corner_4
   - Monster
   - Weapon_Hammer
+  - HammerTower
   layers:
   - Default
   - TransparentFX

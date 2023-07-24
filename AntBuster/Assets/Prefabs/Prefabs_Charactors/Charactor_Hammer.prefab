@@ -72,8 +72,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -672358363
+  m_SortingLayer: 4
   m_SortingOrder: 0
   m_Sprite: {fileID: 4301844918096825189, guid: 626be61ea46848f48841509c5271e64f, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -280,4 +280,3 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   charactor_Hammer_Animator: {fileID: 7558462871669799710}
   weapon_Hammer_Animtor: {fileID: 7558462870788926249}
-  weaponHammer: {fileID: 0}
