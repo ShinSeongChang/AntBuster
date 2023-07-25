@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 
-public class CaharactorController : MonoBehaviour
+public class CharactorHammer_Controller : MonoBehaviour
 {
     public Animator charactor_Hammer_Animator = default;
     public Animator weapon_Hammer_Animtor = default;  
@@ -32,6 +32,8 @@ public class CaharactorController : MonoBehaviour
         result = monsterPos - charactorPos;
 
         //Debug.Log("표적과의 거리");
+        //Debug.Log(result);
+        //Debug.Log("표적과의 거리, 노멀라이즈드");
         //Debug.Log(result.normalized);
 
         charactor_Hammer_Animator.SetFloat("Xpos", result.normalized.x);
