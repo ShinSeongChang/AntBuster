@@ -10,35 +10,54 @@ public class CharactorRifle_Controller : MonoBehaviour
     public Animator charactorRifle_Weapon = default;
     public Animator charactorRifle_WeaponFire = default;
 
+    public SpriteRenderer body;
+    public SpriteRenderer arm;
+    public SpriteRenderer weapon;
+    public SpriteRenderer fire;
+
+    public Transform berral = default;
+
+    public GameObject bulletPrefab = default;
+
+    public Vector2 result = Vector2.zero;
+    public bool isAttack = false;
+
     //public GameObject weaponHammer = default;
 
 
     // Start is called before the first frame update
     void Start()
     {
+        transform.Find("Rifle_Fire").gameObject.SetActive(false);
         charactorRifle_Body = charactorRifle_Body.GetComponentInChildren<Animator>();
         charactorRifle_Arm = charactorRifle_Arm.GetComponentInChildren<Animator>();
         charactorRifle_Weapon = charactorRifle_Weapon.GetComponentInChildren<Animator>();
         charactorRifle_WeaponFire = charactorRifle_WeaponFire.GetComponentInChildren<Animator>();
+
+        body = body.GetComponentInChildren<SpriteRenderer>();
+        arm = arm.GetComponentInChildren<SpriteRenderer>();
+        weapon = weapon.GetComponentInChildren<SpriteRenderer>();
+        fire = fire.GetComponentInChildren<SpriteRenderer>();
+
     }
 
-    private void OnTriggerStay2D(Collider2D collision)
+    public void OnTriggerStay2D(Collider2D collision)
     {
-        // ÅÍ·¿ÀÇ ÁÂÇ¥.
+        // ï¿½Í·ï¿½ï¿½ï¿½ ï¿½ï¿½Ç¥.
         Vector2 charactorPos = new Vector2(transform.position.x, transform.position.y);
 
-        // ÅÍ·¿ÀÇ ¹üÀ§ ¾È¿¡ µé¾î¿Í¼­ ¿òÁ÷ÀÌ´Â Ç¥ÀûÀÇ ÁÂÇ¥.
+        // ï¿½Í·ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½È¿ï¿½ ï¿½ï¿½ï¿½Í¼ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ì´ï¿½ Ç¥ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Ç¥.
         Vector2 monsterPos = collision.transform.position;
 
-        // Ç¥Àû°ú ÅÍ·¿ÀÇ °Å¸®¸¦ ÀúÀåÇÒ º¯¼ö result.
+        // Ç¥ï¿½ï¿½ï¿½ï¿½ ï¿½Í·ï¿½ï¿½ï¿½ ï¿½Å¸ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ result.
         Vector2 result = Vector2.zero;
 
-        // result ´Â ÅÍ·¿¿¡¼­ºÎÅÍ Ç¥Àû±îÁöÀÇ °Å¸®¸¦ °è»êÇÑ´Ù ==> ¸ñÇ¥±îÁöÀÇ °Å¸® = Ç¥Àû - ÀÚ½Å
+        // result ï¿½ï¿½ ï¿½Í·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ Ç¥ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Å¸ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Ñ´ï¿½ ==> ï¿½ï¿½Ç¥ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Å¸ï¿½ = Ç¥ï¿½ï¿½ - ï¿½Ú½ï¿½
         result = monsterPos - charactorPos;
 
-        //Debug.Log("Ç¥Àû°úÀÇ °Å¸®");
+        //Debug.Log("Ç¥ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Å¸ï¿½");
         //Debug.Log(result);
-        //Debug.Log("Ç¥Àû°úÀÇ °Å¸®, ³ë¸Ö¶óÀÌÁîµå");
+        //Debug.Log("Ç¥ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Å¸ï¿½, ï¿½ï¿½Ö¶ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½");
         //Debug.Log(result.normalized);
 
         charactorRifle_Body.SetFloat("Xpos", result.normalized.x);
@@ -55,12 +74,47 @@ public class CharactorRifle_Controller : MonoBehaviour
 
         if (collision.tag == "Monster")
         {
-            charactorRifle_Body.SetBool("Attack", true);
-            charactorRifle_Arm.SetBool("Attack", true);
-            charactorRifle_Weapon.SetBool("Attack", true);
-            charactorRifle_WeaponFire.SetBool("Attack", true);
+            transform.Find("Rifle_Fire").gameObject.SetActive(true);
 
+
+            Instantiate(bulletPrefab, berral.position, Quaternion.identity);
         }
+
+        
+        // ì™¼ìª½ì„ ë°”ë¼ë´ì•¼ í• ë•Œ
+        if ((result.normalized.y > -0.7f && result.normalized.y < 0.7f) && result.normalized.x < 0f || result.normalized.x > 0f)
+        {            
+            transform.Find("Rifle_Fire").transform.localPosition = new Vector3(-1.4f, 0.5f, 0f);
+
+            if ((result.normalized.y > -0.7f && result.normalized.y < 0.7f) && result.normalized.x > 0f)
+            {
+                Debug.Log("ìž‘ë™í•¨?");
+                body.flipX = true;
+                arm.flipX = true;
+                weapon.flipX = true;
+                fire.flipX = true;
+            }
+        }
+        // ì˜¤ë¥¸ìª½ì„ ë°”ë¼ë´ì•¼ í• ë•Œ
+        //if ((result.normalized.y > -0.7f && result.normalized.y < 0.7f) && result.normalized.x > 0f)
+        //{
+        //    body.flipX = true;
+        //    arm.flipX = true;
+        //    weapon.flipX = true;
+        //    fire.flipX = true;
+        //}
+        // ìœ„ë¥¼ ë°”ë¼ë´ì•¼ í• ë•Œ
+        if ((result.normalized.x > -0.7f && result.normalized.x < 0.7f) && result.normalized.y > 0f)
+        {
+            transform.Find("Rifle_Fire").transform.localPosition = new Vector3(-0.05f, 2.2f, 0f);
+        }
+        // ì•„ëž˜ë¥¼ ë°”ë¼ë´ì•¼ í• ë•Œ
+        if ((result.normalized.x > -0.7f && result.normalized.x < 0.7f) && result.normalized.y < 0f)
+        {
+            transform.Find("Rifle_Fire").transform.localPosition = new Vector3(+0.05f, -0.9f, 0f);
+        }
+
+
 
     }
 
@@ -68,10 +122,7 @@ public class CharactorRifle_Controller : MonoBehaviour
     {
         if(collision.tag == "Monster")
         {
-            charactorRifle_Body.SetBool("Attack", false);
-            charactorRifle_Arm.SetBool("Attack", false);
-            charactorRifle_Weapon.SetBool("Attack", false);
-            charactorRifle_WeaponFire.SetBool("Attack", false);
+            transform.Find("Rifle_Fire").gameObject.SetActive(false);
         }
     }
 }

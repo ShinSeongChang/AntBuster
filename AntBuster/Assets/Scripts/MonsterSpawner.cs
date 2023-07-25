@@ -9,8 +9,8 @@ public class MonsterSpawner : MonoBehaviour
     private float lastSpawn = default;
     private float spawnTime = default;
 
-    private float spawnMin = 3.0f;
-    private float spawnMax = 6.0f;
+    private float spawnMin = 300.0f;
+    private float spawnMax = 600.0f;
 
 
     // Start is called before the first frame update
