@@ -72,13 +72,13 @@ public class CharactorRifle_Controller : MonoBehaviour
         charactorRifle_WeaponFire.SetFloat("Xpos", result.normalized.x);
         charactorRifle_WeaponFire.SetFloat("Ypos", result.normalized.y);
 
-        if (collision.tag == "Monster")
-        {
-            transform.Find("Rifle_Fire").gameObject.SetActive(true);
+        //if (collision.tag == "Monster")
+        //{
+        //    transform.Find("Rifle_Fire").gameObject.SetActive(true);
 
+        //    Instantiate(bulletPrefab, berral.position, Quaternion.identity);
 
-            Instantiate(bulletPrefab, berral.position, Quaternion.identity);
-        }
+        //}
 
         
         // 왼쪽을 바라봐야 할때
